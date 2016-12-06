@@ -1,0 +1,52 @@
+body {
+  background-color: #e6e6e6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+h4 {
+  padding-left: 6px;
+}
+.form {
+  float: left;
+  background-color: #ffffff;
+  height: 100%
+  padding: 20px;
+}
+.tasks {
+  float: right;
+  background-color: #ffffff;
+  height: 100%
+  padding: 20px;
+}
+.btn-primary {
+  background-color: #404040 !important;
+  border-color: #262626 !important;
+  margin-bottom: 20px;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+  background: #262626;
+}
+.table-bordered {
+  border: 5px solid #ddd;
+  border-radius: 5px;
+}
+table {
+  border-collapse: separate;
+}
+tbody {
+  border-radius: 8px !important;
+}
+td {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border: none !important;
+}
+td.task-name {
+  padding-left: 15px;
+  float: left;
+}
+td.assignee {
+  padding-right: 20px;
+  float: right;
+}

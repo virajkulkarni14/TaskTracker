@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Task Tracker v2.0</title>
+  </head>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/app.css" rel="stylesheet">
+  <body class="container">
+    <header>
+      <h1>Task Tracker</h1>
+      <h4>v2.0</h4>
+    </header>
+    <div class="main">
+      <div class="form col-xs-5">
+        <h3>Create a Task</h3>
+        <form id="taskForm">
+          <div class="form-group">
+            <label for="task-name">Task Name</label><br/>
+            <input type="text" class="form-control" id="task-name" name="name" placeholder="What needs to be done?" autofocus="autofocus"><br/>
+          </div>
+          <div class="form-group">
+            <label for="task-date">Date</label><br/>
+            <input type="text" class="form-control" id="task-date" name="date" placeholder="mm/dd/yyyy"><br/>
+          </div>
+          <div class="form-group">
+            <label for="task-assigned-to">Assigned To</label><br/>
+            <input type="text" class="form-control" id="task-assigned-to" name="assigned" placeholder="e.g. Bob Doe"><br/>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="tasks col-xs-5">
+        <h3>Existing Tasks</h3>
+        <table class="table table-striped table-bordered">
+          <tbody class="list">
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <footer></footer>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
