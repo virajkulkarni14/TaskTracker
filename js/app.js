@@ -38,17 +38,9 @@ var taskList = {
   }
 ]
 };
+
 var oldTasks = taskList.tasks;
 var node = '';
-$.each(oldTasks,function(index, value){
-  saveToLocalStorage(index, value);
-  createNode(value);
-});
-// Store in local storage
-// save task to local storage
-function saveToLocalStorage(key, value) {
-  localStorage.setItem(key, JSON.stringify(value));
-}
 function createNode(data) {
   node += '<tr>';
   node += '<td class="task-name">';
@@ -60,8 +52,38 @@ function createNode(data) {
   node += '</tr>';
   return node;
 }
+// Store in local storage
+// save task to local storage
+function saveToLocalStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+// create new task and save to local storage
+function saveNewTask(json) {
+  var keys = Object.keys(localStorage);
+  var lastKey = Number(keys[keys.length-1]);
+  saveToLocalStorage((lastKey+1).toString(), json);
+  var newTask = localStorage.getItem((lastKey+1).toString());
+  var newNode = createNode(newTask);
+  $('.list').empty().prepend(newNode);
+}
+function convertFormToJSON(form) {
+  var dataArray = $(form).serializeArray();
+  var json = {};
+
+  $.each(dataArray, function() {
+    json[this.name] = this.value || '';
+  });
+
+  return json;
+}
+
+$.each(oldTasks,function(index, value){
+  saveToLocalStorage(index, value);
+  createNode(value);
+});
+
 $(function() {
-  $('form#taskForm').bind('submit', function(e) {
+  $('form#taskForm').on('submit', function(e) {
     e.preventDefault();
 
     var form = this;
@@ -86,25 +108,6 @@ $(function() {
 
   });
 });
-// create new task and save to local storage
-function saveNewTask(json) {
-  var keys = Object.keys(localStorage);
-  var lastKey = Number(keys[keys.length-1]);
-  saveToLocalStorage((lastKey+1).toString(), json);
-  var newTask = localStorage.getItem((lastKey+1).toString());
-  var newNode = createNode(newTask);
-  $('.list').empty().prepend(newNode);
-}
-function convertFormToJSON(form) {
-  var dataArray = $(form).serializeArray();
-  var json = {};
-
-  $.each(dataArray, function() {
-    json[this.name] = this.value || '';
-  });
-
-  return json;
-}
 // Load on page with elements
 $('.list').html(node);
 
